@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EsperAssigment</string>
+    <string name="mobile">Mobile :</string>
+    <string name="submit">submit</string>
 </resources>
