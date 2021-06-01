@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Feature {
-    @SerializedName("featureId")
+    @SerializedName("feature_id")
     @Expose
     private String featureId;
     @SerializedName("name")
@@ -47,5 +47,14 @@ public class Feature {
 
     public void setOptions(List<Option> options) {
         this.options = options;
+    }
+
+    @Override
+    public String toString() {
+        return "Feature{" +
+                "featureId='" + featureId + '\'' +
+                ", name='" + name + '\'' +
+                ", options=" + options +
+                '}';
     }
 }

@@ -2,4 +2,7 @@
     <string name="app_name">EsperAssigment</string>
     <string name="mobile">Mobile :</string>
     <string name="submit">submit</string>
+    <string name="configuration">Configuration :</string>
+    <string name="features">Features :</string>
+    <string name="other_feature">Other Feature :</string>
 </resources>

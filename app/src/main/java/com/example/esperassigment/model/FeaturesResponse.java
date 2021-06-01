@@ -1,9 +1,13 @@
 package com.example.esperassigment.model;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import com.example.esperassigment.util.DbTypeConverter;
+import com.example.esperassigment.util.ListExclusionTypeConverter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,32 +19,53 @@ public class FeaturesResponse {
     private int id;
     @SerializedName("features")
     @Expose
-    private LiveData<List<FeaturesResponse>> featuresList = null;
+    @TypeConverters(DbTypeConverter.class)
+    private List<Feature> featuresList = null;
+
     @SerializedName("exclusions")
     @Expose
-    private LiveData<List<List<Exclusion>>> exclusionsList = null;
+    @TypeConverters(ListExclusionTypeConverter.class)
+    private List<List<Exclusion>> exclusionsList = null;
 
     public FeaturesResponse() {
     }
 
-    public FeaturesResponse(LiveData<List<FeaturesResponse>> featuresList, LiveData<List<List<Exclusion>>> exclusions) {
+    public FeaturesResponse(int id, List<Feature> featuresList, List<List<Exclusion>> exclusionsList) {
+        this.id = id;
         this.featuresList = featuresList;
-        this.exclusionsList = exclusions;
+        this.exclusionsList = exclusionsList;
     }
 
-    public LiveData<List<FeaturesResponse>> getFeatures() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Feature> getFeaturesList() {
         return featuresList;
     }
 
-    public void setFeatures(LiveData<List<FeaturesResponse>> features) {
-        this.featuresList = features;
+    public void setFeaturesList(List<Feature> featuresList) {
+        this.featuresList = featuresList;
     }
 
-    public LiveData<List<List<Exclusion>>> getExclusions() {
+    public List<List<Exclusion>> getExclusionsList() {
         return exclusionsList;
     }
 
-    public void setExclusions(LiveData<List<List<Exclusion>>> exclusions) {
-        this.exclusionsList = exclusions;
+    public void setExclusionsList(List<List<Exclusion>> exclusionsList) {
+        this.exclusionsList = exclusionsList;
+    }
+
+    @Override
+    public String toString() {
+        return "FeaturesResponse{" +
+                "id=" + id +
+                ", featuresList=" + featuresList +
+                ", exclusionsList=" + exclusionsList +
+                '}';
     }
 }

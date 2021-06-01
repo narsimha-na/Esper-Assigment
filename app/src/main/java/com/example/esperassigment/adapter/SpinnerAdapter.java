@@ -1,6 +1,7 @@
 package com.example.esperassigment.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.esperassigment.R;
+import com.example.esperassigment.model.Exclusion;
+import com.example.esperassigment.model.Feature;
 import com.example.esperassigment.model.Option;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SpinnerAdapter extends ArrayAdapter<Option> {
 
-    public SpinnerAdapter(Context context, ArrayList<Option> optionsList) {
-        super(context, 0, optionsList);
+    private List<Option> featureList;
+    private List<List<Exclusion>> exclusionList;
+    public static final String TAG = "Spiner Adappter";
+    private Context context;
+
+    public SpinnerAdapter(@NonNull Context context, List<Option> featureList) {
+        super(context, 0,featureList);
+        this.context = context;
     }
 
     @NonNull
@@ -46,8 +57,15 @@ public class SpinnerAdapter extends ArrayAdapter<Option> {
         Option currentItem = getItem(position);
 
         if (currentItem != null) {
-            imageViewFlag.setImageResource(R.drawable.ic_launcher_background);
+            Glide
+                    .with(context)
+                    .load(currentItem.getIcon())
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(imageViewFlag);
             textViewName.setText(currentItem.getName());
+        }else{
+            Log.d(TAG, "Adapter ");
         }
 
         return itemView;

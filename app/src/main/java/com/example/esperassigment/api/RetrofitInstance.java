@@ -1,8 +1,5 @@
 package com.example.esperassigment.api;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -42,7 +39,7 @@ public class RetrofitInstance {
         return retrofitInstance;
     }
 
-    public ApiRepository getRepo(){
-        return mRetorfit.create(ApiRepository.class);
+    public Api getRepo(){
+        return mRetorfit.create(Api.class);
     }
 }

@@ -4,10 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Exclusion {
-    @SerializedName("featureId")
+    @SerializedName("feature_id")
     @Expose
     private String featureId;
-    @SerializedName("optionsId")
+    @SerializedName("options_id")
     @Expose
     private String optionsId;
 
@@ -33,5 +33,13 @@ public class Exclusion {
 
     public void setOptionsId(String optionsId) {
         this.optionsId = optionsId;
+    }
+
+    @Override
+    public String toString() {
+        return "Exclusion{" +
+                "featureId='" + featureId + '\'' +
+                ", optionsId='" + optionsId + '\'' +
+                '}';
     }
 }

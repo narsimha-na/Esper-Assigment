@@ -13,13 +13,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.esperassigment.model.Feature;
 import com.example.esperassigment.model.FeaturesResponse;
 import com.example.esperassigment.util.DbTypeConverter;
+import com.example.esperassigment.util.ListExclusionTypeConverter;
 
 import org.jetbrains.annotations.NotNull;
 
 import static com.example.esperassigment.util.Constants.DB_NAME;
 
 @Database(entities = {FeaturesResponse.class},version = 1)
-@TypeConverters(DbTypeConverter.class)
+@TypeConverters({DbTypeConverter.class, ListExclusionTypeConverter.class})
 public abstract class FeaturesDatabase extends RoomDatabase {
 
     private static FeaturesDatabase instance;

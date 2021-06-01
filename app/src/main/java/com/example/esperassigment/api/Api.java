@@ -5,12 +5,12 @@ import com.example.esperassigment.model.FeaturesResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface ApiRepository {
+public interface Api {
 
     /*
         API Call used for getting the data from the URL
      */
-    @GET
+    @GET(".")
     Call<FeaturesResponse> getResponse();
 
 }
